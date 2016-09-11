@@ -8,7 +8,7 @@ public class Draw {
     }
 
     public static void drawDealertop() {
-        System.out.println(" Dealer ");
+        System.out.println("\n" + " Dealer ");
     }
 
     public static void drawDealerbottom() {
@@ -25,6 +25,8 @@ public class Draw {
 
     // Dealer Draw: Array
     public void printCard(int pnum, Cards[] inputCard) {
+
+        this.drawDealertop();
 
         // Top Line
         for (int i = 0; i < pnum; i++) {
@@ -112,10 +114,14 @@ public class Draw {
             Print.p("     ");
         }
         Print.p("\n");
+
+        this.drawDealerbottom();
     }
 
     // Player Draw: ArrayList
     public void printCard(int pnum, ArrayList<Cards> inputCard) {
+
+        this.drawPlayertop();
 
         // Top Line
         for (int i = 0; i < pnum; i++) {
@@ -195,6 +201,7 @@ public class Draw {
             Print.p("     ");
         }
         Print.p("\n");
+
     }
 
 }

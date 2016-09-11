@@ -1,0 +1,148 @@
+package nyc.c4q.RusiLi;
+
+import java.util.ArrayList;
+
+/**
+ * Created by rusili on 8/31/16.
+ */
+public class Draw {
+
+    public Draw() {
+    }
+
+    public void drawCard(Cards inputCard) {
+
+        // Top Line
+        System.out.print('\u250F'); // Top Left
+        for (int i = 0; i < 7; i++) {
+            System.out.print('\u2501');
+        }
+        System.out.println('\u2513'); // Top Right
+
+        // Value Line 1
+        if (inputCard.getInputValue() != 10) {
+            System.out.print('\u2503');
+            System.out.println(inputCard.getCardValue() + "     " + inputCard.getCardValue() + '\u2503');  // Down
+        } else {
+            System.out.print('\u2503');
+            System.out.println(inputCard.getCardValue() + "   " + inputCard.getCardValue() + '\u2503');  // Down
+        }
+
+        // Third Line
+        System.out.println('\u2503' + "       " + '\u2503');  // Down
+
+        // Suit Line
+        System.out.print('\u2503' + "   ");  // Down
+        if (inputCard.getCardSuit() == Cards.Suit.Clubs) {
+            System.out.print('\u2663');
+        } else if (inputCard.getCardSuit() == Cards.Suit.Diamonds) {
+            System.out.print('\u2666');
+        } else if (inputCard.getCardSuit() == Cards.Suit.Hearts) {
+            System.out.print('\u2764');
+        } else if (inputCard.getCardSuit() == Cards.Suit.Spades) {
+            System.out.print('\u2660');
+        }
+        System.out.println("   " + '\u2503');// Space
+
+        // Fifth Line
+        System.out.println('\u2503' + "       " + '\u2503');  // Down
+
+        // Value Line 2
+        if (inputCard.getInputValue() != 10) {
+            System.out.print('\u2503');
+            System.out.println(inputCard.getCardValue() + "     " + inputCard.getCardValue() + '\u2503');  // Down
+        } else {
+            System.out.print('\u2503');
+            System.out.println(inputCard.getCardValue() + "   " + inputCard.getCardValue() + '\u2503');  // Down
+        }
+
+        // Last Line
+        System.out.print('\u2517'); // Bottom Left
+        for (int i = 0; i < 7; i++) {
+            System.out.print('\u2501');
+        }
+        System.out.println('\u251B'); // Bottom Right
+    }
+
+    public static void drawBack() {
+
+        // Top Line
+        System.out.print('\u250F'); // Top Left
+        for (int i = 0; i < 7; i++) {
+            System.out.print('\u2501');
+        }
+        System.out.println('\u2513'); // Top Right
+
+        // Value Line 1
+        System.out.print('\u2503');
+        System.out.println("       " + '\u2503');  // Down
+
+        // Third Line
+        System.out.println('\u2503' + "       " + '\u2503');  // Down
+
+        // Suit Line
+        System.out.print('\u2503' + "    ");  // Down
+        System.out.println("   " + '\u2503');// Space
+
+        // Fifth Line
+        System.out.println('\u2503' + "       " + '\u2503');  // Down
+
+        // Value Line 2
+        System.out.print('\u2503');
+        System.out.println("       " + '\u2503');  // Down
+
+        // Last Line
+        System.out.print('\u2517'); // Bottom Left
+        for (int i = 0; i < 7; i++) {
+            System.out.print('\u2501');
+        }
+        System.out.println('\u251B'); // Bottom Right
+    }
+
+    public static void drawDealertop(){
+        System.out.println(" Dealer ");
+    }
+
+    public static void drawDealerbottom(){
+        System.out.println("_________" + "\n");
+    }
+
+    public static void drawPlayertop(){
+        System.out.println(" Player ");
+    }
+
+    public static void drawPlayerbottom(){
+        System.out.println("\n");
+    }
+
+    public void drawDealer(int input, Cards shownCard, Cards holeCard, Cards thirdCard){
+        drawDealertop();
+         switch (input){
+             case 0:
+                 this.drawCard(shownCard);
+                 break;
+             case 1:
+                 this.drawCard(shownCard);
+                 drawBack();
+                 break;
+             case 2:
+                 this.drawCard(shownCard);
+                 this.drawCard(holeCard);
+                 break;
+             case 3:
+                 this.drawCard(shownCard);
+                 this.drawCard(holeCard);
+                 this.drawCard(thirdCard);
+                 break;
+         }
+        drawDealerbottom();
+    }
+
+    public void drawPlayer(int input, ArrayList<Cards> pCards){
+        drawPlayertop();
+        for (int i=0; i < input; i++){
+            this.drawCard(pCards.get(i));
+        }
+        drawPlayerbottom();
+    }
+}

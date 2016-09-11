@@ -14,14 +14,13 @@ public class Main {
         int iPlayerWins = 0;
         int iTies = 0;
 
-        while (loop == true) {
+        while (loop) {
 
             Deck deck1 = new Deck();
 
             // Dealer draw:
             Cards[] dealerCards = new Cards[4];
             Cards temp = new Cards(null, 0);
-            Cards[] playerCards = new Cards[10];
             String sUserInput;
             int iDealerTotal;
             int iPlayerCards;
@@ -35,14 +34,14 @@ public class Main {
 
             Draw draw = new Draw();
             draw.printCard(1, dealerCards);
-            System.out.println(iDealerTotal);
+            Print.pln(iDealerTotal);
 
             if (iDealerTotal == 21) {
                 Print.pln("Dealer got Blackjack!");
             }
 
             // Player draw:
-            ArrayList<Cards> pCard = new ArrayList<Cards>();
+            ArrayList<Cards> pCard = new ArrayList<>();
 
             pCard.add(deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn())));
             pCard.add(deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn())));
@@ -50,7 +49,7 @@ public class Main {
             iPlayerCards = 2;
 
             draw.printCard(1, pCard);
-            System.out.println(iPlayerTotal);
+            Print.pln(iPlayerTotal);
 
             Print.pln("Please press Enter:");
             scInput.nextLine();
@@ -58,9 +57,9 @@ public class Main {
             temp = dealerCards[2];
             dealerCards[2] = dealerCards[0];
             draw.printCard(2, dealerCards); // hole Card is face down
-            System.out.println(iDealerTotal);
+            Print.pln(iDealerTotal);
             draw.printCard(2, pCard);
-            System.out.println(iPlayerTotal);
+            Print.pln(iPlayerTotal);
             dealerCards[2] = temp;
 
             // while loop
@@ -73,13 +72,13 @@ public class Main {
                         dealerCards[3] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
                         draw.printCard(3, dealerCards);
                         iDealerTotal += dealerCards[3].getFinalValue();
-                        System.out.println(iDealerTotal);
+                        Print.pln(iDealerTotal);
                     } else {
                         draw.printCard(2, dealerCards);
-                        System.out.println(iDealerTotal);
+                        Print.pln(iDealerTotal);
                     }
                     draw.printCard(iPlayerCards, pCard);
-                    System.out.println(iPlayerTotal);
+                    Print.pln(iPlayerTotal);
                     break;
                 } else if (sUserInput.equalsIgnoreCase("hit")) {
                     pCard.add(deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn())));
@@ -89,13 +88,13 @@ public class Main {
                         dealerCards[3] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
                         draw.printCard(3, dealerCards);
                         iDealerTotal += dealerCards[3].getFinalValue();
-                        System.out.println(iDealerTotal);
+                        Print.pln(iDealerTotal);
                     } else {
                         draw.printCard(2, dealerCards);
-                        System.out.println(iDealerTotal);
+                        Print.pln(iDealerTotal);
                     }
                     draw.printCard(iPlayerCards, pCard);
-                    System.out.println(iPlayerTotal);
+                    Print.pln(iPlayerTotal);
                 } else {
                     Print.pln("Please choose Stand or Hit" + "\n");
                 }

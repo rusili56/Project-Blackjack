@@ -2,9 +2,6 @@ package nyc.c4q.RusiLi;
 
 import java.util.ArrayList;
 
-/**
- * Created by rusili on 8/31/16.
- */
 public class Draw {
 
     public Draw() {
@@ -119,7 +116,6 @@ public class Draw {
 
     // Player Draw: ArrayList
     public void printCard(int pnum, ArrayList<Cards> inputCard) {
-        String[] drawline = new String[7];
 
         // Top Line
         for (int i = 0; i < pnum; i++) {

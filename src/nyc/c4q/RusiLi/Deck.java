@@ -2,11 +2,8 @@ package nyc.c4q.RusiLi;
 
 import java.util.ArrayList;
 
-/**
- * Created by rusili on 8/31/16.
- */
 public class Deck {
-    ArrayList<Cards> cardsArrayList = new ArrayList<Cards>();
+    ArrayList<Cards> cardsArrayList = new ArrayList<>();
     //public Cards[] cards = new Cards[53];
     int i = 1;
     int itimesDrawn = 0;
@@ -37,8 +34,6 @@ public class Deck {
 
     public void printAll(Deck dInput) {
         for (int i = 0; i < dInput.cardsArrayList.size(); i++) {
-            Cards tempCard = new Cards(cardsArrayList.get(i).getCardSuit(), cardsArrayList.get(i).getInputValue());
-
             Print.pln(String.format("%s of %s", cardsArrayList.get(i).getInputValue(), cardsArrayList.get(i).getCardSuit()));
         }
     }

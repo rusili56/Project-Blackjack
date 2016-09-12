@@ -5,7 +5,6 @@ public class Print {
     public static void pln (String sInput){
         System.out.println(sInput);
     }
-
     public static void pln (int iInput){
         System.out.println(iInput);
     }

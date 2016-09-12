@@ -7,8 +7,21 @@ public class Draw {
     public Draw() {
     }
 
-    public static void drawDealertop() {
+    public static void finish(double time) {
+        boolean finished = false;
+        if (finished)
+            throw new RuntimeException("frame is already finished");
+        try {
+            Thread.sleep((int) (time * 1000));
+        } catch (InterruptedException e) {
+            // Ignore.
+        }
+        finished = true;
+    }
+
+    public void drawDealertop() {
         System.out.println("\n" + " Dealer ");
+        finish(1);
     }
 
     public static void drawDealerbottom() {
@@ -17,6 +30,7 @@ public class Draw {
 
     public static void drawPlayertop() {
         System.out.println(" Player ");
+        finish(1);
     }
 
     public static void drawPlayerbottom() {

@@ -47,7 +47,7 @@ public class Main {
 
             draw.printCard(1, pCard);
 
-            Print.pln("Please press Enter:");
+            Print.pln("\n" + "Please press Enter:");
             scInput.nextLine();
 
             temp = dealerCards[2];
@@ -111,7 +111,7 @@ public class Main {
 
             Print.pln("Would you like to play again? (y/n:)");
             sUserInput = scInput.nextLine();
-            Print.pln("\n");
+            Print.p("\n");
 
             if (sUserInput.equalsIgnoreCase("y") || sUserInput.equalsIgnoreCase("yes")) {
                 Print.pln("Player: " + iPlayerWins + " || Dealer: " + iDealerWins + " || Ties: " + iTies + "\n");

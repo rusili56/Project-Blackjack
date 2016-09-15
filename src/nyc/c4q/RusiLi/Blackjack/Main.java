@@ -1,6 +1,11 @@
-package nyc.c4q.RusiLi;
+package nyc.c4q.RusiLi.Blackjack;
 
-import java.io.IOException;
+import nyc.c4q.RusiLi.Draw.*;
+import nyc.c4q.RusiLi.Utility.*;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -8,6 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner scInput = new Scanner(System.in);
+        String sInput = "";
         Random randomGenerator = new Random();
         boolean loop = true;
         int iDealerWins = 0;
@@ -21,7 +27,7 @@ public class Main {
             // Dealer draw:
             Cards[] dealerCards = new Cards[4];
             Cards temp = new Cards(null, 0);
-            String sUserInput;
+            Input input = new Input();
             int iDealerTotal;
             int iPlayerCards;
 
@@ -29,6 +35,8 @@ public class Main {
             dealerCards[1] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
             dealerCards[2] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
             iDealerTotal = dealerCards[1].getFinalValue() + dealerCards[2].getFinalValue();
+
+            // SignBoard.Frame frame = oboard.newFrame(); // Creates a new frame. Clears the previous frame.
 
             Draw draw = new Draw();
             draw.printCard(1, dealerCards);
@@ -48,7 +56,7 @@ public class Main {
             draw.printCard(1, pCard);
 
             Print.pln("\n" + "Please press Enter:");
-            scInput.nextLine();
+            Input.i();
 
             temp = dealerCards[2];
             dealerCards[2] = dealerCards[0];
@@ -60,8 +68,8 @@ public class Main {
             while (iPlayerTotal < 21 && iDealerTotal < 21) {
 
                 Print.pln("What do you want to do? Stand or Hit?:" + "\n");
-                sUserInput = scInput.nextLine();
-                if (sUserInput.equalsIgnoreCase("stand")) {
+                sInput = Input.i();
+                if (sInput.equalsIgnoreCase("stand")) {
                     if (iDealerTotal < 16) {
                         dealerCards[3] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
                         draw.printCard(3, dealerCards);
@@ -71,7 +79,7 @@ public class Main {
                     }
                     draw.printCard(iPlayerCards, pCard);
                     break;
-                } else if (sUserInput.equalsIgnoreCase("hit")) {
+                } else if (sInput.equalsIgnoreCase("hit")) {
                     pCard.add(deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn())));
                     iPlayerCards++;
                     iPlayerTotal += pCard.get(iPlayerCards - 1).getFinalValue();
@@ -89,10 +97,11 @@ public class Main {
 
             }
 
+            Print.pln("Dealer: " + iDealerTotal + " || Player: " + iPlayerTotal + "\n");
+
             if (iDealerTotal > 21 || iPlayerTotal == 21) {
                 Print.pln("Player wins!" + "\n");
                 iPlayerWins++;
-
             } else if (iPlayerTotal > 21 || iDealerTotal == 21) {
                 Print.pln("Dealer wins!" + "\n");
                 iDealerWins++;
@@ -110,13 +119,13 @@ public class Main {
             }
 
             Print.pln("Would you like to play again? (y/n:)");
-            sUserInput = scInput.nextLine();
             Print.p("\n");
+            sInput = Input.i();
 
-            if (sUserInput.equalsIgnoreCase("y") || sUserInput.equalsIgnoreCase("yes")) {
+            if (sInput.equalsIgnoreCase("y") || sInput.equalsIgnoreCase("yes")) {
                 Print.pln("Player: " + iPlayerWins + " || Dealer: " + iDealerWins + " || Ties: " + iTies + "\n");
                 loop = true;
-            } else if ((sUserInput.equalsIgnoreCase("n") || sUserInput.equalsIgnoreCase("no"))) {
+            } else if ((sInput.equalsIgnoreCase("n") || sInput.equalsIgnoreCase("no"))) {
                 Print.pln("Thanks for playing!");
                 loop = false;
             }

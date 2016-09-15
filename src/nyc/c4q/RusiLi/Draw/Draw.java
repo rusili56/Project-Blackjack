@@ -1,4 +1,7 @@
-package nyc.c4q.RusiLi;
+package nyc.c4q.RusiLi.Draw;
+
+import nyc.c4q.RusiLi.Blackjack.Cards;
+import nyc.c4q.RusiLi.Utility.Print;
 
 import java.util.ArrayList;
 
@@ -7,21 +10,9 @@ public class Draw {
     public Draw() {
     }
 
-    public static void finish(double time) {
-        boolean finished = false;
-        if (finished)
-            throw new RuntimeException("frame is already finished");
-        try {
-            Thread.sleep((int) (time * 1000));
-        } catch (InterruptedException e) {
-            // Ignore.
-        }
-        finished = true;
-    }
-
     public void drawDealertop() {
         System.out.println("\n" + " Dealer ");
-        finish(1);
+        Animation.stop(1);
     }
 
     public static void drawDealerbottom() {
@@ -30,7 +21,7 @@ public class Draw {
 
     public static void drawPlayertop() {
         System.out.println(" Player ");
-        finish(1);
+        Animation.stop(1);
     }
 
     public static void drawPlayerbottom() {
@@ -129,13 +120,13 @@ public class Draw {
         }
         Print.p("\n");
 
-        this.drawDealerbottom();
+        drawDealerbottom();
     }
 
     // Player Draw: ArrayList
     public void printCard(int pnum, ArrayList<Cards> inputCard) {
 
-        this.drawPlayertop();
+        drawPlayertop();
 
         // Top Line
         for (int i = 0; i < pnum; i++) {
@@ -214,8 +205,7 @@ public class Draw {
             Print.p('\u251B'); // Bottom Right
             Print.p("     ");
         }
-        Print.p("\n");
+        Print.p("\n" + "\n");
 
     }
-
 }

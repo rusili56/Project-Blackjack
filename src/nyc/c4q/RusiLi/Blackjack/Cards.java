@@ -1,4 +1,4 @@
-package nyc.c4q.RusiLi;
+package nyc.c4q.RusiLi.Blackjack;
 
 import java.util.ArrayList;
 

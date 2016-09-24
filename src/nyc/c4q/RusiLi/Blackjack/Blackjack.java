@@ -3,12 +3,10 @@ package nyc.c4q.RusiLi.Blackjack;
 import nyc.c4q.RusiLi.Draw.*;
 import nyc.c4q.RusiLi.Utility.*;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Blackjack {
 
     public static void main(String[] args) throws IOException {
 
@@ -34,7 +32,7 @@ public class Main {
             dealerCards[0] = deck1.drawCard(0);
             dealerCards[1] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
             dealerCards[2] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
-            iDealerTotal = dealerCards[1].getFinalValue() + dealerCards[2].getFinalValue();
+            iDealerTotal = dealerCards[1].getBlackJackValue() + dealerCards[2].getBlackJackValue();
 
             // SignBoard.Frame frame = oboard.newFrame(); // Creates a new frame. Clears the previous frame.
 
@@ -50,7 +48,7 @@ public class Main {
 
             pCard.add(deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn())));
             pCard.add(deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn())));
-            int iPlayerTotal = pCard.get(0).getFinalValue() + pCard.get(1).getFinalValue();
+            int iPlayerTotal = pCard.get(0).getBlackJackValue() + pCard.get(1).getBlackJackValue();
             iPlayerCards = 2;
 
             draw.printCard(1, pCard);
@@ -73,7 +71,7 @@ public class Main {
                     if (iDealerTotal < 16) {
                         dealerCards[3] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
                         draw.printCard(3, dealerCards);
-                        iDealerTotal += dealerCards[3].getFinalValue();
+                        iDealerTotal += dealerCards[3].getBlackJackValue();
                     } else {
                         draw.printCard(2, dealerCards);
                     }
@@ -82,11 +80,11 @@ public class Main {
                 } else if (sInput.equalsIgnoreCase("hit")) {
                     pCard.add(deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn())));
                     iPlayerCards++;
-                    iPlayerTotal += pCard.get(iPlayerCards - 1).getFinalValue();
+                    iPlayerTotal += pCard.get(iPlayerCards - 1).getBlackJackValue();
                     if (iDealerTotal < 16) {
                         dealerCards[3] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
                         draw.printCard(3, dealerCards);
-                        iDealerTotal += dealerCards[3].getFinalValue();
+                        iDealerTotal += dealerCards[3].getBlackJackValue();
                     } else {
                         draw.printCard(2, dealerCards);
                     }

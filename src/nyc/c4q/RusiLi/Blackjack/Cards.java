@@ -22,7 +22,7 @@ public class Cards extends ArrayList<Cards> {
 
     public Suit getCardSuit() { return cardSuit; }
 
-    public int getFinalValue(){
+    public int getBlackJackValue(){
         if (inputValue > 10){
             return 10;
         } else {

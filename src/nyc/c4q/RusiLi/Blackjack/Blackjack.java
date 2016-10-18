@@ -34,8 +34,6 @@ public class Blackjack {
             dealerCards[2] = deck1.drawCard(randomGenerator.nextInt(52 - deck1.TimesDrawn()));
             iDealerTotal = dealerCards[1].getBlackJackValue() + dealerCards[2].getBlackJackValue();
 
-            // SignBoard.Frame frame = oboard.newFrame(); // Creates a new frame. Clears the previous frame.
-
             Draw draw = new Draw();
             draw.printCard(1, dealerCards);
 
